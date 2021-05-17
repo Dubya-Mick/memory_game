@@ -1,0 +1,7 @@
+.GameBoard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 50rem;
+    margin: 0 auto;
+
+}

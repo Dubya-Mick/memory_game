@@ -1,0 +1,21 @@
+.dog-image {
+    height: 10rem;
+    width: auto;
+}
+
+.fade-in {
+    transition: opacity 1s;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.loading {
+    height: 10rem;
+    background-color: blue;
+}

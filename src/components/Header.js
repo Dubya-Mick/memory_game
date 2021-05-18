@@ -4,7 +4,7 @@ import './Header.css';
 function Header() {
     return (
         <div className="Header">
-            Have you seen these dogs by chance before? 
+            Oh I just must not click the same dog!
         </div>
     )
 }

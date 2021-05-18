@@ -1,9 +1,9 @@
 import React from 'react'
 
-function GameHeader() {
+function GameHeader({ score, bestScore }) {
     return (
         <div>
-            Score 0 / Best: 0
+            Score {score} / Best: {bestScore}
         </div>
     )
 }

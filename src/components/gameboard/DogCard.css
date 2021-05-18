@@ -1,6 +1,7 @@
 .dog-image {
     height: 10rem;
     width: auto;
+    cursor: pointer;
 }
 
 .fade-in {

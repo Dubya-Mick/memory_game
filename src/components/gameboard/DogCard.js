@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './DogCard.css'
 
-function DogCard({dog}) {
+function DogCard({dog, dogClickHandler}) {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
-        <div>
+        <div key={dog.id}>
             <img
                 className={`dog-image fade-in ${imageLoaded ? 'visible' : 'hidden'}`}
                 alt="A Dog"
-                src={dog}
-                onLoad={() => {setImageLoaded(true)}}
+                src={dog.url}
+                onLoad={() => setImageLoaded(true)}
+                onClick={() => dogClickHandler(dog.id)}
             />
         </div>
     )

@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './DogCard.css'
 
-function DogCard({dog, dogClickHandler}) {
+function DogCard({ dog, dogClickHandler, gameOver }) {
     const [imageLoaded, setImageLoaded] = useState(false);
+
+    useEffect(() => {
+        setImageLoaded(false);
+    }, [gameOver])
 
     return (
         <div key={dog.id}>

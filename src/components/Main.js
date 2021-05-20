@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import uniqid from 'uniqid';
-import Gameboard from './gameboard/Gameboard'
-import GameHeader from './gameboard/GameHeader'
+import dogNames from 'dog-names';
+import Gameboard from './gameboard/Gameboard';
+import GameHeader from './gameboard/GameHeader';
 import GameOverModal from './GameOverModal';
 import './Main.css';
+import WinnerConfetti from './WinnerConfetti';
 
 function Main() {
 
@@ -13,7 +15,8 @@ function Main() {
     const [gameOver, setGameOver] = useState(false);
 
     const processDogs = (dogUrls) => {
-        return dogUrls.map(dogUrl => ({id: uniqid(), url: dogUrl, alreadyClicked: false}));
+        return dogUrls.map(dogUrl => (
+            {id: uniqid(), url: dogUrl, alreadyClicked: false, name: dogNames.allRandom()}));
     };
 
     const shuffleDogs = (currentDogs) => {
@@ -45,15 +48,15 @@ function Main() {
             setBestScore(newScore)
         }
         setScore(newScore);
-    }
+    };
 
-    const gameIsOver = () => {
+    const youLose = () => {
         setGameOver(true);
-    }
+    };
 
     const dogClickHandler = (id) => {
         if (dogIsAlreadyClicked(id)) {
-            gameIsOver();
+            youLose();
         } else {
             clickDog(id);
             incrementScore();
@@ -75,16 +78,11 @@ function Main() {
         setScore(0);
         setGameOver(false);
         getDogs();
-    }
+    };
 
     useEffect(() => {
         getDogs();
     }, []);
-
-    useEffect(() => {
-        console.log(dogs)
-    }, [dogs]);
-
 
     return (
         <div className="Main">
@@ -102,6 +100,13 @@ function Main() {
                 newRound={newRound}
                 gameOver={gameOver}
             />
+            {
+                score === 12 && 
+                    <WinnerConfetti 
+                        newRound={newRound}
+                    />
+            }
+
         </div>
     )
 }

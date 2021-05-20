@@ -10,13 +10,18 @@ function DogCard({ dog, dogClickHandler, gameOver }) {
 
     return (
         <div key={dog.id}>
-            <img
-                className={`dog-image fade-in ${imageLoaded ? 'visible' : 'hidden'}`}
-                alt="A Dog"
-                src={dog.url}
-                onLoad={() => setImageLoaded(true)}
-                onClick={() => dogClickHandler(dog.id)}
-            />
+            <figure>
+                <img
+                    className={`dog-image fade-in ${imageLoaded ? 'visible' : 'hidden'}`}
+                    alt="A Dog"
+                    src={dog.url}
+                    onLoad={() => setImageLoaded(true)}
+                    onClick={() => dogClickHandler(dog.id)}
+                />
+                <figcaption
+                    className={`fade-in ${gameOver ? 'hidden' : 'visible'}`}
+                >{dog.name}</figcaption>
+            </figure>
         </div>
     )
 }

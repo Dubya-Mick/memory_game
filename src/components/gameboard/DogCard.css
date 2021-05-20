@@ -1,7 +1,20 @@
-.dog-image {
+img {
+    width: 10rem;
     height: 10rem;
-    width: auto;
     cursor: pointer;
+}
+
+.dog-container {
+    display: flex;
+    flex-direction: column;
+}
+
+figure {
+    margin: 0.2rem;
+}
+
+.dog-image {
+    object-fit: cover;
 }
 
 .fade-in {

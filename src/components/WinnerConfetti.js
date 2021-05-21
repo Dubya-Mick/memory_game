@@ -10,7 +10,9 @@ function WinnerConfetti({ newRound }) {
         const confetti = new ConfettiGenerator(settings);
         confetti.render();
         
-        return () => confetti.clear();
+        return () => {
+            confetti.clear();
+        };
     }, []);
 
     return (

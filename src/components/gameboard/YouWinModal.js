@@ -7,7 +7,7 @@ function YouWinModal({ newRound }) {
             <div className="modal-win">
                 <div className="modal-content-win">
                     <h1>YOU DID IT! WOOF WOOF AWOOO!</h1>
-                    <button className="modal-button-win" onClick={() => newRound()}>Restart</button>
+                    <button className="modal-button" onClick={() => newRound()}>Restart</button>
                 </div>
             </div>
         </div>

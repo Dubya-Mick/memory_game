@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './DogCard.css'
 
 function DogCard({ dog, dogClickHandler, gameOver }) {
+    // piece of state for managing whether or not image has loaded to allow for smooth fade-in
     const [imageLoaded, setImageLoaded] = useState(false);
 
     useEffect(() => {
@@ -9,20 +10,18 @@ function DogCard({ dog, dogClickHandler, gameOver }) {
     }, [gameOver])
 
     return (
-        <div key={dog.id}>
-            <figure>
-                <img
-                    className={`dog-image fade-in ${imageLoaded ? 'visible' : 'hidden'}`}
-                    alt="A Dog"
-                    src={dog.url}
-                    onLoad={() => setImageLoaded(true)}
-                    onClick={() => dogClickHandler(dog.id)}
-                />
-                <figcaption
-                    className={`fade-in ${gameOver ? 'hidden' : 'visible'}`}
-                >{dog.name}</figcaption>
-            </figure>
-        </div>
+        <figure>
+            <img
+                className={`dog-image fade-in ${imageLoaded ? 'visible' : 'hidden'}`}
+                alt={`A dog named ${dog.name}`}
+                src={dog.url}
+                onLoad={() => setImageLoaded(true)}
+                onClick={() => dogClickHandler(dog.id)}
+            />
+            <figcaption
+                className={`fade-in ${gameOver ? 'hidden' : 'visible'}`}
+            >{dog.name}</figcaption>
+        </figure>
     )
 }
 

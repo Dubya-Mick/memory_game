@@ -1,6 +1,14 @@
 .Main {
     text-align: center;
-    width: 80vw;
-    min-height: 80vh;
+    width: 90vw;
+    max-width: 50rem;
+    min-height: 70vh;
     margin: 1rem auto;
 }
+
+@media only screen and (max-width: 425px) {
+    .Main {
+        height: 90vh;
+    }
+}
+

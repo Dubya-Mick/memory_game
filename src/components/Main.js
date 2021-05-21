@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import uniqid from 'uniqid';
 import dogNames from 'dog-names';
-import Gameboard from './gameboard/Gameboard';
+import GameBoard from './gameboard/Gameboard';
 import GameHeader from './gameboard/GameHeader';
 import GameOverModal from './GameOverModal';
 import './Main.css';
 import WinnerConfetti from './WinnerConfetti';
 
 function Main() {
-
     const [dogs, setDogs] = useState([]);
     const [score, setScore] = useState(0);
     const [bestScore, setBestScore] = useState(0);
     const [gameOver, setGameOver] = useState(false);
 
+    // create array of objects from array of dog URLs
     const processDogs = (dogUrls) => {
         return dogUrls.map(dogUrl => (
             {id: uniqid(), url: dogUrl, alreadyClicked: false, name: dogNames.allRandom()}));
     };
 
+    // shuffle order of the dogs
     const shuffleDogs = (currentDogs) => {
         const shuffledDogs = currentDogs        
             .map(a => ({sort: Math.random(), value: a}))
@@ -27,10 +28,12 @@ function Main() {
         return shuffledDogs;
     }
 
+    // check if the dog clicked has already been clicked
     const dogIsAlreadyClicked = (id) => {
         return dogs.some(dog => dog.id === id && dog.alreadyClicked);
     };
 
+    // set click status of clicked dog, then shuffle dogs
     const clickDog = (id) => {
         const newClickedDogs = dogs.map(dog => {
             if (dog.id === id) {
@@ -54,6 +57,8 @@ function Main() {
         setGameOver(true);
     };
 
+    // if the dog is already clicked, set gameOver
+    // else set click status of dog and increase score
     const dogClickHandler = (id) => {
         if (dogIsAlreadyClicked(id)) {
             youLose();
@@ -63,23 +68,26 @@ function Main() {
         }
     };
 
+    // fetch dogs using dog API
     const getDogs = async () => {
         try {
             const result = await fetch('https://dog.ceo/api/breeds/image/random/12', { mode: 'cors' });
             const dogData = await result.json();
             const dogItems = processDogs(dogData.message);
             setDogs(dogItems);
-        } catch (error) {
-            console.log(error);
+        } catch {
+            alert('Oop! Failed to retrieve dogs! Try Refreshing the page.');
         };
     };
 
+    // reset the board for new round
     const newRound = () => {
         setScore(0);
         setGameOver(false);
         getDogs();
     };
 
+    // grab dogs on inital mount of Main component
     useEffect(() => {
         getDogs();
     }, []);
@@ -90,7 +98,7 @@ function Main() {
                 score={score}
                 bestScore={bestScore}
             />
-            <Gameboard 
+            <GameBoard 
                 dogs={dogs}
                 dogClickHandler={dogClickHandler}
                 gameOver={gameOver}

@@ -4,9 +4,25 @@ img {
     cursor: pointer;
 }
 
-.dog-container {
-    display: flex;
-    flex-direction: column;
+@media only screen and (max-width: 425px) {
+    img {
+        width: 7rem;
+        height: 7rem;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    img {
+        width: 6rem;
+        height: 6rem;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    img {
+        width: 5rem;
+        height: 5rem;
+    }
 }
 
 figure {
@@ -15,10 +31,11 @@ figure {
 
 .dog-image {
     object-fit: cover;
+    border-radius: 5px;
 }
 
 .fade-in {
-    transition: opacity 1s;
+    transition: opacity 2s;
 }
 
 .visible {
@@ -27,9 +44,4 @@ figure {
 
 .hidden {
     opacity: 0;
-}
-
-.loading {
-    height: 10rem;
-    background-color: blue;
 }

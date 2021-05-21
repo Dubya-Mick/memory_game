@@ -2,14 +2,15 @@ import React from 'react'
 import DogCard from './DogCard'
 import './GameBoard.css'
 
-function Gameboard({ dogs, dogClickHandler, gameOver }) {
-    // shuffle dog images
+function GameBoard({ dogs, dogClickHandler, gameOver }) {
     const dogImages = dogs.map((dog) => (
-        <DogCard 
-            dog={dog}
-            dogClickHandler={dogClickHandler}
-            gameOver={gameOver}
-        />
+        <div key={dog.id}>
+            <DogCard
+                dog={dog}
+                dogClickHandler={dogClickHandler}
+                gameOver={gameOver}
+            />
+        </div>
     ));
     return (
         <div className="GameBoard">
@@ -18,4 +19,4 @@ function Gameboard({ dogs, dogClickHandler, gameOver }) {
     )
 }
 
-export default Gameboard
+export default GameBoard

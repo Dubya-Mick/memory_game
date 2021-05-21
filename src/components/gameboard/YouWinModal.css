@@ -10,7 +10,7 @@
 .modal-win {
     width: 30rem;
     max-width: 100%;
-    height: 7rem;
+    height: 8rem;
     max-height: 100%;
     position: fixed;
     z-index: 1010;
@@ -24,6 +24,18 @@
                  -6px -6px 0px #ffffff;
 }
 
+@media only screen and (max-width: 425px) {
+    .modal-win {
+        max-width: 80%;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .modal-win {
+        height: 10rem;
+    }
+}
+
 
 .modal-content-win {
     position: absolute;
@@ -33,6 +45,9 @@
     height: 100%;
 }
 
-.modal-button-win {
+.modal-button {
     cursor: pointer;
+    width: 5rem;
+    height: 2rem;
+    font-family: 'Quicksand', sans-serif;
 }

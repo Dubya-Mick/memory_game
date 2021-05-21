@@ -1,7 +1,13 @@
 .GameBoard {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    width: 75vw;
-    margin: 0 auto;
-
+    width: 100%;
+    height: 100%;
 }
+
+@media only screen and (max-width: 720px) {
+    .GameBoard {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
